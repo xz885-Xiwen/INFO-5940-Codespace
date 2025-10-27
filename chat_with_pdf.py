@@ -5,7 +5,7 @@ This application implements a Retrieval Augmented Generation (RAG) system that a
 to upload documents (.txt and .pdf formats) and interact with their content through a 
 conversational interface powered by LangChain, ChromaDB, and OpenAI.
 
-Author: [Your Name]
+Author: Xiwen Zhang
 Date: October 2025
 """
 
