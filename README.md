@@ -1,20 +1,8 @@
 # RAG-Powered Document Chat Application
 
-A sophisticated **Retrieval Augmented Generation (RAG)** application built with **Streamlit**, **LangChain**, and **ChromaDB** that enables natural language interaction with document content through an intuitive conversational interface.
+A Retrieval Augmented Generation (RAG) application built with **Streamlit**, **LangChain**, and **ChromaDB** that enables natural language interaction with document content through an intuitive conversational interface.
 
-## 📋 Table of Contents
-
-- [Overview](#overview)
-- [Features](#features)
-- [Architecture](#architecture)
-- [Setup Instructions](#setup-instructions)
-- [Usage Guide](#usage-guide)
-- [Technical Details](#technical-details)
-- [Project Structure](#project-structure)
-- [Configuration](#configuration)
-- [Troubleshooting](#troubleshooting)
-
-## 🎯 Overview
+## Overview
 
 This application implements a complete RAG pipeline that allows users to:
 - Upload multiple documents in TXT and PDF formats
@@ -24,7 +12,7 @@ This application implements a complete RAG pipeline that allows users to:
 
 The system uses state-of-the-art language models and vector databases to provide intelligent document analysis and question answering capabilities.
 
-## ✨ Features
+## Features
 
 ### Core Functionality
 - **Multi-Format Support**: Upload and process both `.txt` and `.pdf` files
@@ -75,49 +63,7 @@ The system uses state-of-the-art language models and vector databases to provide
 - **PDF Support (15 points)**: Full PDF text extraction and processing
 - **Multiple Documents (15 points)**: Upload and query across multiple files simultaneously
 
-## 🏗️ Architecture
-
-```
-┌─────────────────────────────────────────────────────────────┐
-│                    Streamlit Web Interface                   │
-└─────────────────────────────────────────────────────────────┘
-                              │
-                              ▼
-┌─────────────────────────────────────────────────────────────┐
-│                    Document Processing                       │
-│  ┌───────────┐    ┌──────────────┐    ┌─────────────┐     │
-│  │ TXT/PDF   │───▶│  Text Split  │───▶│  Chunking   │     │
-│  │ Loader    │    │              │    │  Strategy   │     │
-│  └───────────┘    └──────────────┘    └─────────────┘     │
-└─────────────────────────────────────────────────────────────┘
-                              │
-                              ▼
-┌─────────────────────────────────────────────────────────────┐
-│                    Vector Store (ChromaDB)                   │
-│  ┌────────────────┐                 ┌──────────────────┐   │
-│  │   OpenAI       │────Embed────▶  │  Vector Database │   │
-│  │   Embeddings   │                 │  (Persistent)    │   │
-│  └────────────────┘                 └──────────────────┘   │
-└─────────────────────────────────────────────────────────────┘
-                              │
-                              ▼
-┌─────────────────────────────────────────────────────────────┐
-│              Conversational Retrieval Chain                  │
-│  ┌──────────┐    ┌──────────┐    ┌────────────────┐       │
-│  │  Query   │───▶│ Retrieve │───▶│   GPT-4        │       │
-│  │          │    │ Top-K    │    │   Generation   │       │
-│  └──────────┘    └──────────┘    └────────────────┘       │
-│                                            │                 │
-│  ┌──────────────────────────────────────┐│                 │
-│  │   Conversation Memory Buffer         ││                 │
-│  └──────────────────────────────────────┘│                 │
-└─────────────────────────────────────────────────────────────┘
-                              │
-                              ▼
-                    User receives answer with sources
-```
-
-## 🚀 Setup Instructions
+## Setup Instructions
 
 ### Prerequisites
 - Python 3.9 or higher
@@ -170,11 +116,9 @@ Create a `.env` file in the project root:
 echo "API_KEY=your_api_key_here" > .env
 ```
 
-**⚠️ IMPORTANT**: Never commit your `.env` file to GitHub! It's already included in `.gitignore`.
-
 ### Step 5: Run the Application
 
-   ```bash
+```bash
 streamlit run chat_with_pdf.py
 ```
 
@@ -190,14 +134,14 @@ streamlit run chat_with_pdf.py
 4. Click "Open in Browser" when the popup appears
 5. If you miss the popup, press `Ctrl+C` and rerun the command
 
-## 📖 Usage Guide
+## Usage Guide
 
 ### Basic Workflow
 
 1. **Upload Documents**
    - Click the sidebar file uploader
    - Select one or more `.txt` or `.pdf` files
-   - Click "🚀 Process Documents"
+   - Click "Process Documents"
    - Wait for processing to complete
 
 2. **Ask Questions**
@@ -206,7 +150,7 @@ streamlit run chat_with_pdf.py
    - View the AI-generated response with source citations
 
 3. **View Sources**
-   - Click "📚 View Sources" under any response
+   - Click "View Sources" under any response
    - See the exact document passages used to generate the answer
 
 4. **Continue Conversation**
@@ -233,7 +177,7 @@ For a document about machine learning:
 - **Review Sources**: Always check the source passages for accuracy
 - **Context Matters**: Use follow-up questions to dive deeper into topics
 
-## 🔧 Technical Details
+## Technical Details
 
 ### Chunking Strategy Rationale
 
@@ -281,7 +225,7 @@ The application uses a **RecursiveCharacterTextSplitter** with carefully chosen 
 - Allows natural language generation
 - Maintains factual accuracy
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 INFO-5940-Codespace/
@@ -297,7 +241,7 @@ INFO-5940-Codespace/
 └── venv/                      # Virtual environment (not tracked)
 ```
 
-## ⚙️ Configuration
+## Configuration
 
 ### Environment Variables
 
@@ -368,7 +312,7 @@ To adjust the behavior:
 4. Check that the virtual environment is activated
 5. Ensure API key is valid and not expired
 
-## 📝 Development Notes
+## Development Notes
 
 ### Changes from Template
 
@@ -406,23 +350,5 @@ To adjust the behavior:
 - Maintains semantic coherence
 - Flexible and configurable
 - Proven effective across document types
-
-## 🎓 Learning Resources
-
-- [LangChain Documentation](https://python.langchain.com/docs/get_started/introduction)
-- [ChromaDB Documentation](https://docs.trychroma.com/)
-- [Streamlit Documentation](https://docs.streamlit.io/)
-- [RAG Paper (Lewis et al.)](https://arxiv.org/abs/2005.11401)
-
-## 📄 License
-
-This project is created for educational purposes as part of INFO 5940 coursework.
-
-## 👤 Author
-
-Created for INFO 5940 - Fall 2024
-Cornell Tech
-
----
 
 **Note**: This application is designed to run in the provided GitHub Codespaces environment. If running locally, ensure all dependencies are properly installed and API keys are configured.
