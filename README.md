@@ -273,37 +273,6 @@ To adjust the behavior:
 
 **Note**: Changes to chunk size or overlap require reprocessing documents.
 
-## 🐛 Troubleshooting
-
-### Common Issues
-
-**Issue**: API Key Error
-- **Solution**: Ensure `.env` file exists with correct API key
-- **Check**: `cat .env` should show `API_KEY=your_key`
-
-**Issue**: Import Errors
-- **Solution**: Ensure virtual environment is activated
-- **Check**: `which python` should point to venv
-- **Fix**: `source venv/bin/activate` and reinstall dependencies
-
-**Issue**: PDF Processing Fails
-- **Solution**: Ensure PDF has extractable text (not scanned image)
-- **Alternative**: Convert PDF to searchable format first
-
-**Issue**: ChromaDB Errors
-- **Solution**: Clear temporary directory and restart
-- **Fix**: Delete `chroma_db/` folder if it exists
-
-**Issue**: Memory Errors
-- **Solution**: Reduce number of uploaded documents
-- **Alternative**: Decrease `CHUNK_SIZE` or `RETRIEVAL_K`
-
-**Issue**: Slow Response Times
-- **Solution**: 
-  - Reduce `RETRIEVAL_K` for faster retrieval
-  - Ensure good internet connection for API calls
-  - Process smaller documents
-
 ### Getting Help
 
 1. Check this README's troubleshooting section
