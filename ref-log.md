@@ -74,7 +74,7 @@ This document tracks all external sources, libraries, documentation, tutorials, 
 - **Usage**: Loading environment variables from .env file
 - **Purpose**: Secure API key management without hardcoding
 
-## 📖 Learning Resources & Tutorials
+## Learning Resources & Tutorials
 
 ### RAG Fundamentals
 - **Paper**: "Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks"
