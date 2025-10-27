@@ -2,7 +2,7 @@
 
 This document tracks all external sources, libraries, documentation, tutorials, and tools used in the development of this RAG-powered Document Chat Application.
 
-## 📚 Official Documentation
+## Official Documentation
 
 ### LangChain
 - **Source**: [LangChain Python Documentation](https://python.langchain.com/docs/get_started/introduction)
@@ -121,20 +121,16 @@ This document tracks all external sources, libraries, documentation, tutorials, 
 - **tiktoken**: OpenAI's tokenizer for token counting
 - **sentence-transformers**: Additional embedding model support
 
-## 🤖 GenAI Usage
+## GenAI Usage
 
-### Cursor AI Assistant
+### Copilot AI Assistant
 - **Usage**: Code assistance and problem-solving throughout development
 - **Specific Uses**:
-  1. **Initial Code Structure**: Generated boilerplate code for Streamlit application
-     - Rationale: Faster setup of standard patterns
-  2. **Documentation Writing**: Assisted in writing comprehensive docstrings
+  1. **Documentation Writing**: Assisted in writing comprehensive docstrings
      - Rationale: Ensure clear documentation of complex functions
-  3. **Error Handling**: Suggested robust error handling patterns
-     - Rationale: Improve application reliability
-  4. **Best Practices**: Advised on LangChain best practices
+  2. **Best Practices**: Advised on LangChain best practices
      - Rationale: Ensure proper usage of framework features
-  5. **README Creation**: Helped structure comprehensive documentation
+  3. **README Creation**: Helped structure comprehensive documentation
      - Rationale: Create professional, complete documentation
 
 ### ChatGPT
@@ -144,12 +140,8 @@ This document tracks all external sources, libraries, documentation, tutorials, 
      - Rationale: Deep understanding of system design
   2. **Chunking Strategy**: Discussed optimal chunk size determination
      - Rationale: Make informed decisions about parameters
-  3. **LangChain Patterns**: Clarified proper usage of ConversationalRetrievalChain
-     - Rationale: Implement conversation memory correctly
-  4. **Error Debugging**: Helped troubleshoot ChromaDB integration issues
-     - Rationale: Resolve technical challenges efficiently
 
-## 📚 Code Inspirations
+## Code Inspiration
 
 ### Class Materials
 - **Source**: INFO 5940 Course Repository (assignment1 branch)
@@ -167,31 +159,7 @@ This document tracks all external sources, libraries, documentation, tutorials, 
 - **Usage**: UI/UX patterns for chat interfaces
 - **Applied**: Chat message display and input handling
 
-## 🔍 Stack Overflow & Forums
-
-### Specific Questions Referenced
-
-1. **ChromaDB Persistence**
-   - **Link**: Stack Overflow - "How to persist ChromaDB collection"
-   - **Usage**: Understanding ChromaDB persistent storage
-   - **Applied**: Implementing temp directory for vector store
-
-2. **Streamlit Session State**
-   - **Link**: Streamlit Forum - "Best practices for session state"
-   - **Usage**: Managing state across reruns
-   - **Applied**: Proper initialization and clearing of session state
-
-3. **PDF Text Extraction**
-   - **Link**: Stack Overflow - "Extracting text from PDF with PyPDF"
-   - **Usage**: Handling various PDF formats
-   - **Applied**: Robust PDF loading with error handling
-
-4. **LangChain Memory Management**
-   - **Link**: LangChain GitHub Issues - "ConversationBufferMemory usage"
-   - **Usage**: Proper memory configuration
-   - **Applied**: Memory setup in conversation chain
-
-## 🧪 Testing & Quality Assurance
+## Testing & Quality Assurance
 
 ### Manual Testing Approach
 - **Documents Tested**:
@@ -209,7 +177,7 @@ This document tracks all external sources, libraries, documentation, tutorials, 
   - Reset functionality
   - Error handling (invalid files, empty documents)
 
-## 📝 Design Decisions & Rationale
+## Design Decisions & Rationale
 
 ### Architecture Choices
 
@@ -249,79 +217,3 @@ This document tracks all external sources, libraries, documentation, tutorials, 
    - **Research**: OpenAI recommendations for balanced creativity
    - **Rationale**: Natural language while maintaining accuracy
    - **Testing**: 0.5 too rigid, 0.9 too creative, 0.7 optimal
-
-## 🔐 Security Considerations
-
-### API Key Management
-- **Reference**: [12-Factor App - Config](https://12factor.net/config)
-- **Implementation**: Environment variables via .env file
-- **Protection**: .gitignore to prevent accidental commits
-
-### File Upload Security
-- **Reference**: Streamlit security best practices
-- **Implementation**: File type validation, size limits (implicit)
-- **Protection**: Temporary file storage with automatic cleanup
-
-## 📊 Performance Considerations
-
-### Optimization Strategies
-- **Embedding Caching**: ChromaDB persistence to avoid re-embedding
-- **Efficient Retrieval**: Top-K limiting to balance quality and speed
-- **Memory Management**: Temporary directory cleanup on reset
-- **Token Efficiency**: Chunk size optimization to minimize API costs
-
-## 🎯 Known Limitations & Future Improvements
-
-### Current Limitations
-1. **Scanned PDFs**: Cannot extract text from image-based PDFs
-2. **Language Support**: Optimized for English documents
-3. **Document Size**: Very large documents (>10MB) may be slow to process
-4. **Concurrent Users**: Single-user design (Streamlit limitation)
-
-### Potential Improvements
-1. **OCR Integration**: Add Tesseract for scanned PDF support
-2. **Advanced Chunking**: Implement semantic chunking based on topics
-3. **Caching Layer**: Add Redis for faster repeated queries
-4. **User Authentication**: Multi-user support with document isolation
-
-## 📅 Development Timeline
-
-- **Day 1**: Environment setup, basic Streamlit structure
-- **Day 2**: LangChain integration, document loading
-- **Day 3**: ChromaDB implementation, embedding generation
-- **Day 4**: Conversational chain setup, memory integration
-- **Day 5**: UI enhancements, source attribution
-- **Day 6**: PDF support, multi-document handling
-- **Day 7**: Testing, debugging, documentation
-- **Day 8**: Final refinements, comprehensive README
-
-## ✅ Assignment Requirements Checklist
-
-### Requirements Met
-- ✅ Utilizes provided Codespace setup (10 points)
-- ✅ File upload functionality for .txt files (10 points)
-- ✅ RAG System Implementation (150 points):
-  - ✅ Document ingestion and chunking (50 points)
-  - ✅ RAG pipeline with retrieval and generation (50 points)
-  - ✅ Conversational interface (50 points)
-- ✅ Support for .txt and .pdf formats (15 points)
-- ✅ Multiple document upload capability (15 points)
-- ✅ Well-commented code
-- ✅ Comprehensive README.md
-- ✅ Detailed ref-log.md (this file)
-- ✅ API key security (not exposed in repository)
-
-## 🙏 Acknowledgments
-
-- **INFO 5940 Course Staff**: For providing the assignment template and guidance
-- **LangChain Team**: For excellent documentation and examples
-- **Streamlit Team**: For intuitive web framework
-- **OpenAI**: For powerful language models
-- **Cornell Tech**: For API access and computational resources
-
----
-
-**Last Updated**: October 16, 2025
-
-**Note**: This reference log documents all external sources and influences in the development process. All code has been adapted and customized for this specific application while acknowledging the foundations provided by these resources.
-
