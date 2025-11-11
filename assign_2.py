@@ -229,15 +229,15 @@ def run_reviewer(plan_text: str) -> str:
 # Streamlit UI
 # ──────────────────────────────────────────────────────────────────────────────
 
-st.set_page_config(page_title="Travel Planner", page_icon="✈️")
+st.set_page_config(page_title="Travel Planner")
 
-st.title("✈️ Multi-Agent Travel Planner")
-st.caption("Planner → Reviewer (with live tool calls in the sidebar)")
+st.title("Multi-Agent Travel Planner")
+st.caption("Planner -> Reviewer (with live tool calls in the sidebar)")
 
 # Sidebar: session controls + examples + dev panel
 with st.sidebar:
     st.header("Session")
-    if st.button("🔄 Reset conversation"):
+    if st.button("Reset conversation"):
         st.session_state.clear()
         st.rerun()
 
@@ -248,7 +248,7 @@ with st.sidebar:
     st.subheader("Developer view")
     show_tools = st.toggle("Show tool activity (live)", value=True)
     if show_tools:
-        tool_expander = st.expander("🔧 Tool activity", expanded=True)
+        tool_expander = st.expander("Tool activity", expanded=True)
         tool_panel = tool_expander.container()
     else:
         tool_panel = st.container()  # inert sink
@@ -313,37 +313,37 @@ if user_input:
                 st.empty()
 
             # Step 1: Planner
-            with st.status("🧭 Planner Agent: generating itinerary…", expanded=True) as status:
-                live_msg.markdown("🧭 Planner Agent is creating your itinerary…")
+            with st.status("Planner Agent: generating itinerary...", expanded=True) as status:
+                live_msg.markdown("Planner Agent is creating your itinerary...")
                 plan_text = run_planner(user_input)
                 progress.progress(40)
-                status.update(label="🔎 Reviewer Agent: validating with live searches…", state="running")
+                status.update(label="Reviewer Agent: validating with live searches...", state="running")
 
             # Step 2: Reviewer (tool calls will appear live in sidebar)
-            live_msg.markdown("🔎 Reviewer Agent is validating the plan with live searches…")
+            live_msg.markdown("Reviewer Agent is validating the plan with live searches...")
             review_text = run_reviewer(plan_text)
             progress.progress(90)
 
             # Completed
-            live_msg.markdown("✅ Validation complete. Rendering results…")
+            live_msg.markdown("Validation complete. Rendering results...")
             time.sleep(0.2)
             progress.progress(100)
 
             # Final render: show only the validated result, with the raw plan expandable
-            st.info("🤖 **Reviewer Agent** (validated)")
+            st.info("**Reviewer Agent** (validated)")
             st.markdown(review_text)
             with st.expander("See raw plan from Planner Agent"):
                 st.markdown(plan_text)
 
             # Save only the validated result to history
             st.session_state.messages.append({"role": "assistant", "content": review_text})
-            st.session_state.meta.append({"trace": "Planner Agent → Reviewer Agent"})
-            st.caption("Planner Agent → Reviewer Agent")
+            st.session_state.meta.append({"trace": "Planner Agent -> Reviewer Agent"})
+            st.caption("Planner Agent -> Reviewer Agent")
 
         except Exception as e:
             # Friendly error box
-            live_msg.markdown("❌ Something went wrong.")
-            err = f"⚠️ Error while processing your request:\n\n```\n{e}\n```"
+            live_msg.markdown("Something went wrong.")
+            err = f"Error while processing your request:\n\n```\n{e}\n```"
             st.markdown(err)
             st.session_state.messages.append({"role": "assistant", "content": err})
             st.session_state.meta.append({"trace": "Runtime error."})
