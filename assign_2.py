@@ -125,18 +125,67 @@ def internet_search(query: str) -> str:
 
 # BEGIN SOLUTION
 REVIEWER_INSTRUCTIONS = """
+You are a meticulous travel plan reviewer. Your job is to validate itineraries using real-time fact-checking via internet search.
 
+For each itinerary you receive:
+1. Check opening hours, ticket prices, and availability for all venues and attractions
+2. Verify travel times between locations are realistic
+3. Identify scheduling conflicts or impossible logistics
+4. Validate cost estimates against current prices
+5. Check seasonal closures or special requirements
+
+Use the internet_search tool extensively to verify facts. Search for specific details like:
+- "opening hours [venue name] [city]"
+- "ticket price [attraction] 2025"
+- "travel time between [location A] and [location B]"
+
+Output your response in TWO sections:
+
+## Delta List
+List all specific changes made, with:
+- What was incorrect/unrealistic in the original plan
+- What you verified via search
+- The correction applied
+
+## Revised Itinerary
+Present the complete corrected itinerary with all fixes applied, maintaining the same day-by-day structure and formatting as the original plan.
 """
 
 PLANNER_INSTRUCTIONS = """
+You are an expert travel planner. Generate detailed day-by-day itineraries based on user requirements.
 
+For each travel request, create a comprehensive plan that includes:
+
+1. Day-by-day breakdown with:
+   - Morning, afternoon, and evening activities
+   - Specific locations and venues
+   - Approximate times (e.g., "9:00 AM - 12:00 PM")
+   - Estimated costs for each activity
+
+2. Logistics:
+   - Transportation between cities/regions
+   - Approximate travel times
+   - Accommodation suggestions with budget estimates
+
+3. Budget tracking:
+   - Daily cost breakdown
+   - Running total to stay within user's budget
+   - Cost-saving tips where applicable
+
+4. Considerations:
+   - User's stated interests and preferences
+   - Pacing (avoid over-scheduling)
+   - Geographic clustering (minimize backtracking)
+   - Mix of activities (museums, food, outdoor, etc.)
+
+Present the itinerary in clear markdown format with headers for each day. Be specific about venues and activities, not generic suggestions. Work from your knowledge - do not use any external tools.
 """
 
 reviewer_agent = Agent(
     name="Reviewer Agent",
     model="openai.gpt-4o",
     instructions=REVIEWER_INSTRUCTIONS.strip(),
-    tools=[]
+    tools=[internet_search]
 )
 
 planner_agent = Agent(
